@@ -3,15 +3,17 @@ image:
 
 tasks:
   - init: |
-      sudo apt-get update && sudo apt-get install -y git  # Ensure git is available
-      git clone <url-of-the-open-source-repo-list>        # You can guide participants to clone from a list
-      npm install                                         # Or other setup commands for npm-based projects
+      sudo apt-get update && sudo apt-get install -y git python3-pip
+      git clone https://github.com/pandas-dev/pandas
+      git clone https://github.com/scikit-learn/scikit-learn
+      pip install -r pandas/requirements-dev.txt      # Install dev dependencies for pandas
+      pip install -r scikit-learn/requirements.txt    # Install dependencies for scikit-learn
     command: |
       git status   # Example command for workspace testing
 
 vscode:
   extensions:
-    - <your-supermaven-extension-id>  # Install the SuperMaven extension automatically
+    - Supermaven.supermaven  # Install the SuperMaven extension automatically
 
 ports:
   - port: 3000
@@ -20,4 +22,5 @@ ports:
 github:
   prebuilds:
     master: true  # Enable prebuilds for faster environment setup
+
 
