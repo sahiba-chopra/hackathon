@@ -1,0 +1,16 @@
+image:
+  file: .gitpod.Dockerfile  # Dockerfile to define the environment
+
+tasks:
+  - init: npm install       # Commands to run during initialization
+    command: npm start      # Commands to run when the workspace is ready
+
+ports:
+  - port: 3000              # Example port exposed for a web app
+    onOpen: open-preview
+
+# Optional: Prebuilds to save time for participants
+github:
+  prebuilds:
+    master: true             # Enable prebuilds for the main branch
+
