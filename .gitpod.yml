@@ -1,16 +1,23 @@
 image:
-  file: .gitpod.Dockerfile  # Dockerfile to define the environment
+  file: .gitpod.Dockerfile  # Define custom Dockerfile for environment setup
 
 tasks:
-  - init: npm install       # Commands to run during initialization
-    command: npm start      # Commands to run when the workspace is ready
+  - init: |
+      sudo apt-get update && sudo apt-get install -y git  # Ensure git is available
+      git clone <url-of-the-open-source-repo-list>        # You can guide participants to clone from a list
+      npm install                                         # Or other setup commands for npm-based projects
+    command: |
+      git status   # Example command for workspace testing
+
+vscode:
+  extensions:
+    - <your-supermaven-extension-id>  # Install the SuperMaven extension automatically
 
 ports:
-  - port: 3000              # Example port exposed for a web app
+  - port: 3000
     onOpen: open-preview
 
-# Optional: Prebuilds to save time for participants
 github:
   prebuilds:
-    master: true             # Enable prebuilds for the main branch
+    master: true  # Enable prebuilds for faster environment setup
 
